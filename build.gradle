@@ -38,15 +38,6 @@ tasks.withType(JavaCompile).configureEach {
     options.release = 21
 }
 
-tasks.register('processUiResources', Copy) {
-    from project(':ui').tasks.named('buildFrontend')
-    into layout.buildDirectory.dir('resources/main/console')
-}
-
-tasks.named('processResources', ProcessResources) {
-    dependsOn tasks.named('processUiResources')
-}
-
 halo {
     version = '2.21'
 }
